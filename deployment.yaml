@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-yaml
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-yaml
+  template:
+    metadata:
+      labels:
+        app: web-yaml
+    spec:
+      containers:
+      - name: nginx
+        image: sebastianm33/portafolio:latest
+        ports:
+          - containerPort: 80
+
+
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
+
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 10

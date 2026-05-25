@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mi-config
+  namespace: default
+data:
+  MENSAJE: "Hola desde Kubernetes 🚀"
+  DATO: "Cuentame de tu vida"
+  CRACK: "OYE LOKA"
